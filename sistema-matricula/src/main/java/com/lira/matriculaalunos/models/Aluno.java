@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import com.sun.istack.NotNull;
 
 @Entity
@@ -28,14 +30,19 @@ public class Aluno implements Serializable{
 	@Size(min=3)
 	@Column(name = "sobrenome")
 	private String sobrenome;
+	
+	@NotNull
+	@Column(name = "matricula", unique = true)
+	private int matricula;
 
 	public Aluno() {}
 
-	public Aluno(int id, String nome, String sobrenome) {
+	public Aluno(int id, String nome, String sobrenome, int matricula) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
+		this.matricula = matricula;
 	}
 
 	public int getId() {
@@ -62,5 +69,11 @@ public class Aluno implements Serializable{
 		this.sobrenome = sobrenome;
 	}
 	
-	
+	public int getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
 }

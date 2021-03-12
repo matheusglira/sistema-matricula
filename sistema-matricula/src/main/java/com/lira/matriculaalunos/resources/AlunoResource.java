@@ -81,6 +81,7 @@ public class AlunoResource {
 				.map(aluno ->{
 					aluno.setNome(newAluno.getNome());
 					aluno.setSobrenome(newAluno.getSobrenome());
+					aluno.setMatricula(newAluno.getMatricula());
 					Aluno alunoUpdate = alunoRepository.save(aluno);
 					return ResponseEntity.ok().body(alunoUpdate);
 				}).orElse(ResponseEntity.notFound().build());
